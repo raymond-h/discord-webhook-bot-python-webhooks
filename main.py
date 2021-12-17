@@ -1,5 +1,6 @@
-from flask import Flask, request, jsonify
+from flask import Flask
 from maze_generator import make_maze
+from spell_generator import make_spell
 
 app = Flask(__name__)
 
@@ -7,4 +8,12 @@ app = Flask(__name__)
 def generate_maze():
     return {
         'message': f'```\n{make_maze()}\n```'
+    }
+
+@app.route('/spell', methods=['GET', 'POST'])
+def generate_spell():
+    spells = [make_spell() for _ in range(20)]
+
+    return {
+        'message': f'```\n{"\n".join(spells)}\n```'
     }
