@@ -13,7 +13,8 @@ def generate_maze():
 @app.route('/spell', methods=['GET', 'POST'])
 def generate_spell():
     spells = [make_spell() for _ in range(20)]
+    spells_str = "\n".join(spells)
 
     return {
-        'message': f'```\n{"\n".join(spells)}\n```'
+        'message': f'```\n{spells_str}\n```'
     }
