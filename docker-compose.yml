@@ -4,5 +4,7 @@ services:
   api:
     build: .
     restart: unless-stopped
-    ports:
-      - '127.0.0.1:50001:5000'
+    expose:
+      - '5000'
+    labels:
+      docker-gen.host: '${VIRTUAL_HOST}'
